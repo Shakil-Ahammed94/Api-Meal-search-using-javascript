@@ -22,8 +22,8 @@ const displayMeal=(mealMenu3)=>{
                 <div class="card-body">
                   <h5 class="card-title">${kabar.strMeal}</h5>
                   <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <button onclick="modalContents(${kabar.idMeal})"type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#item-modal">
-            Details
+                  <button   onclick="modalContents(${kabar.idMeal})" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModaldetailsId">
+  Details
 </button>
                 </div>
               </div>
@@ -50,10 +50,10 @@ const searchmeal=(searchText)=>{
 
 
 const modalContents=(newContent)=>{
-    const newUrl=`https://www.themealdb.com/api/json/v1/1/search.php?s=${newContent}`
+    const newUrl=`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${newContent}`
     fetch(newUrl)
     .then(res=>res.json())
-    .then(data=> displaymealModal(data.meals[0]))
+    .then(data=>displaymealModal(data.meals[0]))
 
     
 
@@ -62,9 +62,9 @@ const modalContents=(newContent)=>{
 
 
 
-const displaymealModal=kabarMenu2=>{
+const displaymealModal= kabarMenu2 =>{
     console.log(kabarMenu2);
-    document.getElementById('mealDetailsModalLabel').innerText=kabarMenu2.strMeal;
+    document.getElementById('ModaldetailsIdLabel').innerText=kabarMenu2.strMeal;
     const mealBody=document.getElementById('modal-body');
     mealBody.innerHTML=`
      <img  class="img-fluid"src="${kabarMenu2.strMealThumb}">
